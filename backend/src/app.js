@@ -1,15 +1,16 @@
 const express = require('express');
 const cors = require('cors');
+const { errors } = require('celebrate'); 
 const routes = require('./routes');
 
 const app = express();
 
 app.use(cors()); // módulo de segurança
 app.use(express.json()); // Transforma o .json enviado pela requisição por algo que seja interpretável pela aplicação
-app.use(routes)
+app.use(routes);
+app.use(errors());
 
-app.listen(3333); // quando acessar a porta 3333, é desejado acesso a aplicacao (no navegador localhost:3333)
-
+module.exports = app; 
 /**
  * Rota / Recurso
  */
